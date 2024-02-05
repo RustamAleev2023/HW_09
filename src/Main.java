@@ -1,12 +1,16 @@
 import task1.Player;
 import task1.Site;
+import task2.Invoice;
+import task2.Item;
+import task2.Stock;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        task1();
+//        task1();
+        task2();
     }
 
     //Задание 1
@@ -156,9 +160,77 @@ public class Main {
         site.printTenBestPlayersInOneGame("game1");
 
         System.out.println("=======================================");
-site.getTenBestPlayersInAllGames();
+        site.getTenBestPlayersInAllGames();
+    }
+
+    //Задание 2
+    //В компании XXX есть несколько складов с продукцией,
+    //каждый склад имеет свой собственный юридический адрес.
+    //Регистрация поступления или отгрузки товаров осуществляется по накладной (документ). Товары могут поступать
+    //как от внешних поставщиков, так и перемещаться между
+    //складами компании.
+    //Накладная имеет такие данные (см. рисунок).
+    //Задача – разработать программу складского учета.
+    //Программа должна:
+    //■ содержать форму ввода накладной;
+    //■ выводить список всех товаров на складе;
+    //■ выводить список всех внешних поставщиков;
+    //■ искать товар на складе по наименованию
+    public static void task2(){
+        Item item1 = new Item("Item1", "pcs", 10, 1);
+        Item item2 = new Item("Item2", "pcs", 10, 2);
+        Item item3 = new Item("Item3", "pcs", 10, 3);
+        Item item4 = new Item("Item4", "pcs", 10, 4);
+        Item item5 = new Item("Item5", "pcs", 10, 5);
+
+        ArrayList<Item> items1 = new ArrayList<>();
+        items1.add(item1);
+        items1.add(item2);
+        items1.add(item3);
+        items1.add(item4);
+        items1.add(item5);
+
+        Invoice invoice1 = new Invoice("03.02.2024",
+                "Roga i Kopyta",
+                "Outer",
+                "Stock1",
+                " ",
+                " ",
+                items1);
 
 
+        Item item6 = new Item("Item6", "pcs", 10, 6);
+        Item item7 = new Item("Item7", "pcs", 10, 7);
+        Item item8 = new Item("Item8", "pcs", 10, 8);
+        Item item9 = new Item("Item1", "pcs", 10, 2);
+        Item item10 = new Item("Item2", "pcs", 10, 4);
+
+        ArrayList<Item> items2 = new ArrayList<>();
+        items2.add(item6);
+        items2.add(item7);
+        items2.add(item8);
+        items2.add(item9);
+        items2.add(item10);
+
+        Invoice invoice2 = new Invoice("03.02.2024",
+                "Stock2",
+                "Inner",
+                "Stock1",
+                " ",
+                " ",
+                items2);
+
+        Stock stock = new Stock("Stack1", "Kalinigrad");
+
+        System.out.println("==============================");
+        stock.addInvoiceToList(invoice1);
+        stock.addInvoiceToList(invoice2);
+        System.out.println("==============================");
+        stock.printAllItemsName();
+        System.out.println("==============================");
+        stock.printOuterSenders();
+        System.out.println("==============================");
+        stock.printFoundItemByNameList("Item1");
 
     }
 
