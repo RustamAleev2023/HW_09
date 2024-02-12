@@ -97,10 +97,12 @@ public class Main {
         site.registration(player12);
         site.registration(player13);
         System.out.println("=======================================");
-
+        System.out.println("Вывод все игроков: ");
         for (int i = 0; i < site.getPlayerList().size(); i++) {
             System.out.println(site.getPlayerList().get(i).toString());
         }
+        System.out.println("================================");
+        System.out.println("Установка рейтинга: ");
         for (int i = 0; i < site.getPlayerList().size(); i++) {
             site.getPlayerList().get(i).setRank("game1");
         }
@@ -145,21 +147,25 @@ public class Main {
         for (int i = 0; i < 10; i++) {
             site.getPlayerList().get(i).setRank("game2");
         }
-
+        System.out.println("Список игроков после установки рейтинга");
         for (int i = 0; i < site.getPlayerList().size(); i++) {
             System.out.println(site.getPlayerList().get(i).toString());
         }
         System.out.println("=======================================");
+        System.out.println("Вывод списка всех игр");
         site.printAllGamesList();
 
         System.out.println("=======================================");
+        System.out.println("Вывод рейтинга игрока по его имени:");
         site.printPlayerRank("player2", "game1");
         site.printPlayerRank("player20", "game1");
 
         System.out.println("=======================================");
+        System.out.println("Вывод  10 лучших игроков в определенной игре");
         site.printTenBestPlayersInOneGame("game1");
 
         System.out.println("=======================================");
+        System.out.println("Вывод 10 лучших игроков с учетом всех игр");
         site.getTenBestPlayersInAllGames();
     }
 
@@ -222,14 +228,16 @@ public class Main {
 
         Stock stock = new Stock("Stack1", "Kalinigrad");
 
-        System.out.println("==============================");
         stock.addInvoiceToList(invoice1);
         stock.addInvoiceToList(invoice2);
         System.out.println("==============================");
+        System.out.println("Вывод всех товаров на складе: ");
         stock.printAllItemsName();
         System.out.println("==============================");
+        System.out.println("Вывод списка всех внешних поставщиков: ");
         stock.printOuterSenders();
         System.out.println("==============================");
+        System.out.println("Поиск товара на складе по наименованию: ");
         stock.printFoundItemByNameList("Item1");
 
     }
